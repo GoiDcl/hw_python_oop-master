@@ -151,7 +151,11 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Method for unpacking data package coming from sensors."""
-    check_type: Dict[str, Type[Trainig]] = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
+    check_type: Dict[str, Type[Trainig]] = {
+        'SWM': Swimming,
+        'RUN': Running,
+        'WLK': SportsWalking
+    }
     try:
         return check_type[workout_type](*data)
     except Exception as e:
