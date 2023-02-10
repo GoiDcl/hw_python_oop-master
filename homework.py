@@ -7,32 +7,27 @@ import logging
 @dataclass
 class InfoMessage:
     """Massage dataclass."""
-    def __init__(self,
-                 training_type: str,
-                 duration: float,
-                 distance: float,
-                 speed: float,
-                 calories: float,
-                 ) -> None:
-        self.training_type = training_type
-        self.duration = duration
-        self.distance = distance
-        self.speed = speed
-        self.calories = calories
+
+    training_type: str
+    duration: float
+    distance: float
+    speed: float
+    calories: float
 
     def get_message(self) -> str:
         """Return training info."""
         return (
-            f'Training type: {self.training_type}; '
-            f'Duration: {self.duration:.3f} ч.; '
-            f'Distance: {self.distance:.3f} км; '
-            f'Mean speed: {self.speed:.3f} км/ч; '
-            f'Calories spent: {self.calories:.3f}.'
+            f'Тип тренировки: {self.training_type}; '
+            f'Длительность: {self.duration:.3f} ч.; '
+            f'Дистанция: {self.distance:.3f} км; '
+            f'Ср. скорость: {self.speed:.3f} км/ч; '
+            f'Потрачено ккал: {self.calories:.3f}.'
         )
 
 
 class Training:
     """Base training class."""
+
     M_IN_KM: int = 1000
     LEN_STEP: float = 0.65
     MIN_IN_H: int = 60
@@ -45,7 +40,6 @@ class Training:
         self.action = action
         self.duration = duration
         self.weight = weight
-        MIN_IN_H = self.duration * 60
 
     def get_distance(self) -> float:
         """Calculate covered distance."""
@@ -75,6 +69,7 @@ class Running(Training):
     Base running training class.
     Mean speed present in km/h.
     """
+
     CAL_MULT: int = 18
     CAL_SHIFT: float = 1.79
 
@@ -95,6 +90,7 @@ class SportsWalking(Training):
     Additionally using height of the user in sm.
     Mean speed present in m/s.
     """
+
     CAL_MULT: float = 0.035
     CAL_SHIFT: float = 0.029
     MS: float = 0.278
@@ -124,6 +120,7 @@ class Swimming(Training):
     Base swimming training class.
     Using different base step constant and multiplayers.
     """
+    
     LEN_STEP: float = 1.38
     CAL_MULT: float = 1.1
     CAL_SHIFT: int = 2
