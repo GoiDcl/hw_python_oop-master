@@ -1,8 +1,5 @@
 from dataclasses import dataclass
-from typing import Dict
-from typing import Type
-import traceback
-import logging
+from typing import Dict, Type
 
 @dataclass
 class InfoMessage:
@@ -87,7 +84,7 @@ class SportsWalking(Training):
     """
     Base walking training class.
     Using different multiplayers.
-    Additionally using height of the user in sm.
+    Additionally using height of the user.
     Mean speed present in m/s.
     """
 
